@@ -1,14 +1,6 @@
 version: '3.3'
 
 services:
-  db:
-    image: postgres
-    restart: always
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/Library/PostgreSQL/9.6/data
-
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -20,8 +12,3 @@ services:
       - DATABASE_URL
       - SECRET_KEY
       - DJANGO_SETTINGS_MODULE
-    depends_on:
-      - db
-
-volumes:
-  pgdata:

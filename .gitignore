@@ -102,8 +102,13 @@ ENV/
 
 # project specific
 node_modules
-alsace/static/css
-alsace/static/js
+
+static/css
+static/js
+
 media
 .idea
+
 db.sqlite3
+
+staticfiles

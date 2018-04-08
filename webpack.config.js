@@ -15,10 +15,10 @@ const extractCss = new ExtractTextPlugin({
 
 const config = {
     context: path.resolve(__dirname),
-    entry: './alsace/src/index.js',
+    entry: './src/index.js',
     devtool: 'cheap-module-source-map',
     output: {
-        path: path.resolve(__dirname, 'alsace', 'static', 'js'),
+        path: path.resolve(__dirname, 'static', 'js'),
         filename: 'alsace.js',
         publicPath: '/static/'
     },
@@ -56,8 +56,8 @@ const config = {
     plugins: [
         extractCss,
         new CleanWebpackPlugin([
-            './alsace/static/js/*.*',
-            './alsace/static/css/*.*'
+            './static/js/*.*',
+            './static/css/*.*'
         ]),
         new webpack.ProvidePlugin({
             $: 'jquery'
