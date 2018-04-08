@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 Django = "<2.1,>=2.0"
 wagtail = "<2.1,>=2.0"
+dj-database-url = "*"
+"psycopg2" = "*"
+gunicorn = "*"
 
 [dev-packages]
 
