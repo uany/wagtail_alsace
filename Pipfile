@@ -9,6 +9,7 @@ wagtail = "<2.1,>=2.0"
 dj-database-url = "*"
 "psycopg2" = "*"
 gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 
