@@ -10,6 +10,8 @@ dj-database-url = "*"
 "psycopg2" = "*"
 gunicorn = "*"
 django-heroku = "*"
+"boto3" = "*"
+django-storages = "*"
 
 [dev-packages]
 
