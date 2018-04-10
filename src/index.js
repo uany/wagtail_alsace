@@ -2,6 +2,7 @@ import 'foundation-sites/dist/css/foundation.min.css';
 
 import './css/main.css';
 import './css/header.css';
+import './css/footer.css';
 
 window.$(document).foundation();
 
