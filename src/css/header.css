@@ -1,0 +1,108 @@
+@import 'main.css';
+
+@keyframes open {
+  from{
+    top:-100vh;
+  }
+  to{
+    top:0;
+  }
+}
+
+@keyframes close {
+  from{
+    top:0;
+  }
+  to{
+    top:-100vh;
+  }
+}
+
+.header{
+  position:relative;
+  padding:0 1em;
+  z-index:1000;
+  background-color: var(--bg_color);
+  & .logo{
+    color:var(--font_color);
+    font-size:2em;
+  }
+  & .hamburger {
+    position: absolute;
+    min-width: 30px;
+    width: 30px;
+    max-width: 30px;
+    height: 100%;
+    cursor: pointer;
+    text-align: left;
+    right: 1em;
+    & span {
+      position: absolute;
+      transition: all 250ms ease-in-out;
+      height: 3px;
+      width: 100%;
+      background-color: var(--font_color);
+      &:first-child {
+        top: 13px;
+      }
+      &:nth-child(2) {
+        top: 23px
+      }
+      &:last-child {
+        top: 33px
+      }
+    }
+
+    &.open {
+      & span {
+        &:first-child {
+          transform: rotate(135deg);
+          top: 22px;
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:last-child {
+          transform: rotate(-135deg);
+          top: 22px;
+        }
+      }
+    }
+  }
+}
+
+.main-navigation{
+  position:absolute;
+  top:-100vh;
+  width:100%;
+  height:100vh;
+  min-height:100vh;
+  max-height:100vh;
+  overflow: hidden;
+  background-color:var(--bg_color);
+  & ul{
+    list-style: none;
+    padding:68px 0 0 0;
+    margin:0;
+    & li{
+      font-size:2em;
+      text-align: center;
+      &.presentation{
+        & a{
+          color:var(--font_color);
+        }
+        &.active{
+          & a{
+            color:var(--alsace_red);
+          }
+        }
+      }
+    }
+  }
+  &.open{
+    animation: open 350ms forwards ease-in-out;
+  }
+  &.closing{
+    animation: close 350ms forwards ease-in-out;
+  }
+}

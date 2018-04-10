@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Sunflower:300');
+
+@font-face {
+  font-family: "icomoon";
+  src: url("/static/fonts/icomoon.woff") format("woff");
+}
+
+:root{
+    --bg_color:white;
+    --font_color:#444444;
+    --alsace_red:#d71407;
+}
+
+.icon-acoeur{
+  display: inline-block;
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  color:var(--alsace_red);
+  &:before{
+    content: "\e601";
+  }
+}
+
+html, body {
+  position: relative;
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+
+  background-color: var(--bg_color);
+  color: var(--font_color);
+
+  font-family: "Sunflower", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus{
+  outline:none;
+}
+
+.no-scroll{
+  overflow: hidden;
+}
