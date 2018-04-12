@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Sunflower:300');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 @font-face {
   font-family: "icomoon";
@@ -35,7 +35,7 @@ html, body {
   background-color: var(--bg_color);
   color: var(--font_color);
 
-  font-family: "Sunflower", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
