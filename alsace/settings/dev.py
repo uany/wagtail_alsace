@@ -8,8 +8,6 @@ DEBUG = True
 SECRET_KEY = os.getenv('SECRET_KEY')
 ALLOWED_HOSTS = ['*']
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 
 try:
     from .local import *

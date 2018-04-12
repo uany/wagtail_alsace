@@ -17,10 +17,10 @@ import dj_database_url
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+ADMINS = [('WebMasters', 'webmaster@alsace.nyc')]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
 
 # Application definition
 
@@ -168,6 +168,20 @@ WAGTAIL_SITE_NAME = "alsace"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://alsace.nyc'
+
+WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'webmaster@alsace.nyc'
+WAGTAIL_ENABLE_UPDATE_CHECK = True
+
+if os.getenv('MAILGUN_SMTP_SERVER'):
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.getenv('MAILGUN_SMTP_SERVER')
+    EMAIL_PORT = os.getenv('MAILGUN_SMTP_PORT')
+    EMAIL_HOST_USER = os.getenv('MAILGUN_SMTP_LOGIN')
+    EMAIL_HOST_PASSWORD = os.getenv('MAILGUN_SMTP_PASSWORD')
+    EMAIL_USE_TLS = True
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Configure Django App for Heroku.
 import django_heroku
