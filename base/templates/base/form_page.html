@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags navigation_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12
+                    col-sm-12
+                    col-md-12
+                    col-lg-12">
+                {% if page.intro %}
+                    <p class="intro">{{ page.intro|richtext }}</p>
+                {% endif %}
+                {% if page.body %}
+                    {{ page.body|richtext }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12
+                    col-sm-12
+                    col-md-offset-2
+                    col-md-8
+                    col-lg-offset-3
+                    col-lg-6">
+
+                <form action="{% pageurl page %}" method="POST" role="form">
+                    {% csrf_token %}
+                    {% if form.subject.errors %}
+                        <ol role="alertdialog">
+                            {% for error in form.subject.errors %}
+                                <li role="alert"><strong>{{ error|escape }}</strong></li>
+                            {% endfor %}
+                        </ol>
+                    {% endif %}
+
+                    {% for field in form %}
+                        <div class="field-wrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
+
+                        <label for={{ field.id }}>
+                            {{ field.name }}
+                            {% if field.field.required %}<span class="required">*</span>{% endif %}
+                        </label>
+
+
+                        {{ field }}
+                        
+                        {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                        </div>
+                    {% endfor %}
+
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

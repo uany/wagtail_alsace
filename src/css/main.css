@@ -55,3 +55,57 @@ html, body {
 .no-scroll{
   overflow: hidden;
 }
+
+form{
+  & .field-wrapper{
+    margin-top:1em;
+    & label{
+      font-size:1em;
+      text-transform: capitalize;
+      padding:.5rem .5rem 0 .5rem;
+      & .required{
+        color:var(--alsace_red);
+      }
+    }
+    & input{
+      margin-bottom:0;
+
+    }
+  }
+}
+
+[type=color],
+[type=date],
+[type=datetime-local],
+[type=datetime],
+[type=email],
+[type=month],
+[type=number],
+[type=password],
+[type=search],
+[type=tel],
+[type=text],
+[type=time],
+[type=url],
+[type=week],
+textarea{
+  box-shadow: none;
+  border:none;
+  border-bottom:2px solid rgba(68,68,68,.2);
+  transition: all 250ms ease-in-out;
+  &:focus{
+    box-shadow: none;
+    border:none;
+    border-bottom:2px solid rgba(68,68,68,.5);
+  }
+}
+
+[type=submit]{
+  background-color:var(--alsace_red);
+  color:white;
+  border:none;
+  padding:.5em 1em;
+  &:focus{
+    background-color:color(var(--alsace_red) alpha(-25%));
+  }
+}
