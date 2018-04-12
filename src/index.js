@@ -15,8 +15,6 @@ $(document).ready(() => {
     let isOpen = document.querySelector('.hamburger').classList
         .toggle('open');
 
-    console.log(isOpen);
-
     if(isOpen){
         document.querySelector('#main-navigation').classList
             .toggle('open');
