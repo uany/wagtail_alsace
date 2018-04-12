@@ -178,6 +178,7 @@ if os.getenv('MAILGUN_SMTP_SERVER'):
     EMAIL_PORT = os.getenv('MAILGUN_SMTP_PORT')
     EMAIL_HOST_USER = os.getenv('MAILGUN_SMTP_LOGIN')
     EMAIL_HOST_PASSWORD = os.getenv('MAILGUN_SMTP_PASSWORD')
+    EMAIL_USE_TLS = True
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
