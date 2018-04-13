@@ -1,0 +1,21 @@
+
+{% for field in mailchimp_form %}
+<form action="#" id="mce_form">
+	{% csrf_token %}
+	<div class="field-wrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
+		{{ field.errors }}
+		<label for={{ field.id }}>
+			Email
+			{% if field.field.required %}<span class="required">*</span>{% endif %}
+		</label>
+
+		{{ field }}
+
+		<div style="text-align:right; margin-top:.5em;">
+			<input type="submit" />
+		</div>
+
+	</div>
+</form>
+
+{% endfor %}

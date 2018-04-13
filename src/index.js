@@ -38,6 +38,8 @@ $(document).ready(() => {
                 .toggle('no-scroll');
         }, 400);
     }
+    });
 });
-});
+
+import '../base/templates/tags/mailchimp_form_control';
 
