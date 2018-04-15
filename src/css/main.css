@@ -7,6 +7,7 @@
     --bg_color:white;
     --font_color:#444444;
     --alsace_red:#d71407;
+    --alsace_green:rgb(45,159,67);
 }
 
 .icon-acoeur{
@@ -108,4 +109,9 @@ textarea{
   &:focus{
     background-color:color(var(--alsace_red) alpha(-25%));
   }
+}
+
+
+.mce_thanks{
+  display:none;
 }

@@ -40,10 +40,10 @@
                     {% for field in form %}
                         <div class="field-wrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
 
-                        <label for={{ field.id }}>
-                            {{ field.name }}
-                            {% if field.field.required %}<span class="required">*</span>{% endif %}
-                        </label>
+                            <label for={{ field.id }}>
+                                {{ field.name }}
+                                {% if field.field.required %}<span class="required">*</span>{% endif %}
+                            </label>
 
 
                         {{ field }}

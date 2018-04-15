@@ -17,6 +17,8 @@ services:
       - DATABASE_URL
       - SECRET_KEY
       - DJANGO_SETTINGS_MODULE
+      - MAILCHIMP_API_KEY
+      - MAILCHIMP_API_URL
     depends_on:
       - db
 
