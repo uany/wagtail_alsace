@@ -9,15 +9,25 @@ $(document).ready(() => {
             type: "POST",
             url: url,
             data: form.serialize(),
+            beforeSend:() => {
+                $('#mce_form_errors').hide();
+
+            },
             success: (data) => {
-                console.log(data);
+                form.slideUp();
+                $('.mce_thanks').show();
             }
         })
-            .done(function() {
-                console.log('Done');
+            .done(function(data) {
+                console.log(data);
             })
-            .fail(function() {
-                console.log('Error');
+            .fail(function(error) {
+                let error_message = error.responseJSON.detail;
+                $('#mce_form_errors')
+                    .text(error_message);
+
+                $('#mce_form_errors')
+                    .slideDown();
             })
             .always(function() {
                 console.log('Complete');

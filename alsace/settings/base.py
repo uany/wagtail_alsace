@@ -22,6 +22,9 @@ ADMINS = [('WebMasters', 'webmaster@alsace.nyc')]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
+SECRET_KEY = os.getenv('SECRET_KEY')
+ALLOWED_HOSTS = ['*']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -182,6 +185,10 @@ if os.getenv('MAILGUN_SMTP_SERVER'):
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Mailchimp
+MAILCHIMP_API_URL = os.getenv('MAILCHIMP_API_URL')
+MAILCHIMP_API_KEY = os.getenv('MAILCHIMP_API_KEY')
+MAILCHIMP_LIST_ID = os.getenv('MAILCHIMP_LIST_ID')
 
 # Configure Django App for Heroku.
 import django_heroku
