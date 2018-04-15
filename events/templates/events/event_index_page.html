@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags event_tags %}
 
 {% block content %}
     <div class="container-fluid">
@@ -12,20 +12,7 @@
 	<h1>{{ page.title }}</h1>
 	<p>{{ page.introduction}}</p>
 
-	{% for event in events %}
-
-		<a href="{% pageurl event %}">
-			{% image event.image fill-180x180-c100 as image %}
-			<img src="{{ image.url }}" width="{{ image.width }}"
-			     height="{{ image.height }}" alt="{{ image.alt }}" class="" />
-		</a>
-		<div class="">
-			<a href="{% pageurl event %}">
-				<h2>{{ event.title }}</h2>
-			</a>
-		</div>
-
-	{% endfor %}
+            {% events_grid %}
 
             </div>
         </div>

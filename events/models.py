@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 from wagtail.admin.edit_handlers import (
     FieldPanel,
     RichTextFieldPanel
@@ -9,10 +11,20 @@ from wagtail.core.models import Page
 from wagtail.search import index
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from wagtail.core.models import Page, PageManager, PageQuerySet
+
+class EventPageQuerySet(PageQuerySet):
+    def future(self):
+        today = timezone.localtime(timezone.now()).date()
+        return self.filter(date__gte=today)
+
+EventPageManager = PageManager.from_queryset(EventPageQuerySet)
+
 class EventPage(Page):
     """
     Detail view for a specific event
     """
+    objects = EventPageManager()
     introduction = models.TextField(
         help_text='Text to describe the page',
         blank=True)
