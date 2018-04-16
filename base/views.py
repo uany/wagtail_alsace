@@ -1,7 +1,8 @@
 from base.forms import MailchimpSignUpForm
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, View
 from django.http import JsonResponse
 from django.conf import settings
+from django.http import HttpResponse, HttpResponseServerError
 
 import requests
 from requests.auth import HTTPBasicAuth
@@ -25,3 +26,15 @@ class MailchimpSignUpView(FormView):
 
         return JsonResponse(mce_request.json(),
                             status=mce_request.status_code)
+
+class FacebookWebhook(View):
+
+    def get(self, request, *args, **kwargs):
+        mode = self.request.get('hub.mode')
+        challenge = self.request.get('hub.challenge')
+        verify_token = self.request.get('hub.verify_token')
+
+        if mode == 'subscribe' and verify_token == settings.FB_VERIFY_TOKEN:
+            return HttpResponse(challenge)
+        else:
+            return HttpResponseServerError()
