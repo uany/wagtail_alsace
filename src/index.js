@@ -2,6 +2,7 @@
 import './css/main.css';
 import './css/header.css';
 import './css/footer.css';
+import './css/event.css';
 
 window.$(document).foundation();
 

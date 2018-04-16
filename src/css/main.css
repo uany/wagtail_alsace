@@ -4,10 +4,15 @@
 }
 
 :root{
-    --bg_color:white;
-    --font_color:#444444;
-    --alsace_red:#d71407;
-    --alsace_green:rgb(45,159,67);
+  --bg_color:white;
+  --font_color:#444444;
+  --alsace_red:#d71407;
+  --alsace_green:rgb(45,159,67);
+
+  --sm: 48em;
+  --md: 64em;
+  --lg: 74em;
+
 }
 
 .icon-acoeur{
@@ -110,7 +115,6 @@ textarea{
     background-color:color(var(--alsace_red) alpha(-25%));
   }
 }
-
 
 .mce_thanks{
   display:none;

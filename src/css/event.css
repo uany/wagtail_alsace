@@ -1,0 +1,35 @@
+@import 'main.css';
+
+.event-grid{
+  display:flex;
+  flex-flow: wrap;
+  & a.event-wrapper{
+    flex:none;
+    width:100%;
+    & .img{
+      min-height:200px;
+      height:200px;
+      max-height:200px;
+      background-repeat: no-repeat;
+      background-color: #eeeeee;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+}
+
+@media only screen and (min-width: 48em){
+  .event-grid {
+    & a.event-wrapper {
+      flex: 1 1 45%;
+      &:nth-child(odd){
+       padding-right:.5em;
+      }
+      &:nth-child(even){
+       padding-left:.5em;
+      }
+    }
+  }
+}
+
+
