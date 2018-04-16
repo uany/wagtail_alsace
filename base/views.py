@@ -30,9 +30,9 @@ class MailchimpSignUpView(FormView):
 class FacebookWebhook(View):
 
     def get(self, request, *args, **kwargs):
-        mode = self.request.get('hub.mode')
-        challenge = self.request.get('hub.challenge')
-        verify_token = self.request.get('hub.verify_token')
+        mode = self.request.GET.get('hub.mode')
+        challenge = self.request.GET.get('hub.challenge')
+        verify_token = self.request.GET.get('hub.verify_token')
 
         if mode == 'subscribe' and verify_token == settings.FB_VERIFY_TOKEN:
             return HttpResponse(challenge)
