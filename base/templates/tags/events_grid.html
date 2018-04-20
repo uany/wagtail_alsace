@@ -1,20 +1,23 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-
 <div class="event-grid">
-    {% for event in events %}
-        <a href="{% pageurl event %}" class="event-wrapper">
-            {% image event.image max-320x200 as image %}
+    {% for event_page in events %}
+        {% with event_page.event as event %}
+        <a href="{% pageurl event_page %}" class="event-wrapper">
+            {% image event_page.event.image max-320x200 as image %}
             <div class="img" style="background-image:url({{ image.url }})">
                 <img src="{{ image.url }}"
                      style="display:none;"
                      width="100%"
                      height="100%" alt="{{ image.alt }}" />
             </div>
-            <div class="">
-                <p>{{ event.title }}</p>
+            <div class="description">
+                <p class="date">{{ event.date }}</p>
+                <p class="title">{{ event.title }}</p>
+                <p class="location">{{ event.location_name }} - {{ event.location_address }}</p>
             </div>
         </a>
+        {% endwith %}
         {% empty %}
          <p>No event scheduled ate the moment.</p>
     {% endfor %}

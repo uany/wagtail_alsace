@@ -1,4 +1,4 @@
-from wagtail.core.models import Page
+from base.models import StandardPage
 
-class HomePage(Page):
+class HomePage(StandardPage):
     pass

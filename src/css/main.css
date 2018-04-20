@@ -47,7 +47,7 @@ html, body {
 
 .wrapper {
   min-height: 100%;
-  margin-bottom: -49px;
+  padding-bottom: 60px;
 }
 
 .footer{

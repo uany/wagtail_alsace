@@ -1,12 +1,9 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [packages]
-
 django = "<2.1,>=2.0"
 wagtail = "<2.1,>=2.0"
 dj-database-url = "*"
@@ -16,12 +13,9 @@ django-heroku = "*"
 "boto3" = "*"
 django-storages = "*"
 requests = "*"
-
+wagtailfontawesome = "*"
 
 [dev-packages]
 
-
-
 [requires]
-
 python_version = "3.6"

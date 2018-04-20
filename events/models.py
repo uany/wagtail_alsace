@@ -7,26 +7,20 @@ from wagtail.admin.edit_handlers import (
 )
 
 from wagtail.core.fields import RichTextField
-from wagtail.core.models import Page
+from wagtail.core.models import Page, PageManager, PageQuerySet, Orderable
 from wagtail.search import index
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.snippets.models import register_snippet
 
-from wagtail.core.models import Page, PageManager, PageQuerySet
 
-class EventPageQuerySet(PageQuerySet):
-    def future(self):
-        today = timezone.localtime(timezone.now()).date()
-        return self.filter(date__gte=today)
-
-EventPageManager = PageManager.from_queryset(EventPageQuerySet)
-
-class EventPage(Page):
+@register_snippet
+class Event(models.Model, index.Indexed):
     """
-    Detail view for a specific event
+    A Django model to store a specific event information.
     """
-    objects = EventPageManager()
-    introduction = models.TextField(
-        help_text='Text to describe the page',
+    title = models.TextField(
+        help_text='Name of the event',
         blank=True)
     image = models.ForeignKey(
         'wagtailimages.Image',
@@ -36,18 +30,73 @@ class EventPage(Page):
         related_name='+',
         help_text='Landscape mode only; horizontal width between 1000px and 3000px.'
     )
-    body = RichTextField(verbose_name="Page body", blank=True)
+    body = RichTextField(verbose_name="Description", blank=True)
     date = models.DateTimeField()
+    location_name = models.TextField(
+        help_text='Name of the location',
+        blank=True)
+    location_address = models.TextField(
+        help_text='Address of the location',
+        blank=True)
+
+    panels = [
+        FieldPanel('title'),
+        ImageChooserPanel('image'),
+        RichTextFieldPanel('body'),
+        FieldPanel('date'),
+        FieldPanel('location_name'),
+        FieldPanel('location_address'),
+    ]
+
+    search_fields = (
+        index.SearchField('title', partial_match=True, boost=10),
+        index.SearchField('body'),
+        index.FilterField('location_name')
+    )
+
+    def __str__(self):
+        return self.title
+
+
+class EventPageQuerySet(PageQuerySet):
+    def future(self):
+        today = timezone.localtime(timezone.now()).date()
+        return self.filter(event__date__gte=today)
+
+EventPageManager = PageManager.from_queryset(EventPageQuerySet)
+
+
+class EventPage(Page):
+    """
+    Detail view for a specific event
+    """
+    objects = EventPageManager()
+    seo_description = models.TextField(
+        help_text='Text to describe the page',
+        blank=True)
+    seo_keywords = models.TextField(
+        help_text='Text to describe the page',
+        blank=True)
+    event = models.ForeignKey(
+        'events.Event',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     content_panels = Page.content_panels + [
-        FieldPanel('introduction', classname="full"),
-        ImageChooserPanel('image'),
-        FieldPanel('date', classname="full"),
-        RichTextFieldPanel('body')
+        SnippetChooserPanel('event'),
+    ]
+
+    promote_panels = Page.promote_panels + [
+        FieldPanel('seo_description', classname="full"),
+        FieldPanel('seo_keywords', classname="full"),
     ]
 
     search_fields = Page.search_fields + [
-        index.SearchField('body'),
+        index.SearchField('seo_description'),
+        index.SearchField('seo_keywords'),
     ]
 
     parent_page_types = ['EventIndexPage']
