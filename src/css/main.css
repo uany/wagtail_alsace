@@ -47,11 +47,13 @@ html, body {
 
 .wrapper {
   min-height: 100%;
-  padding-bottom: 60px;
+  padding-bottom: 48px;
+
 }
 
 .footer{
-
+  margin-top:-48px;
+  height:48px;
 }
 
 :focus{
@@ -118,4 +120,17 @@ textarea{
 
 .mce_thanks{
   display:none;
+}
+
+a,.a{
+  color:var(--alsace_red);
+  &:hover{
+    color:color(var(--alsace_red) blackness(15%));
+  }
+  &:focus{
+    color:color(var(--alsace_red) blackness(30%));
+  }
+  &:visited{
+    color:color(var(--alsace_red) alpha(5%));
+  }
 }

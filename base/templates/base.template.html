@@ -55,10 +55,13 @@
     {% wagtailuserbar %}
 
     <div class="wrapper">
+
         {% block header %}
             {# Header contains the main_navigation block #}
             {% include "includes/header.html" with parent=site_root calling_page=self %}
         {% endblock header %}
+
+        <div class="hero-container"></div>
 
         {% block content %}{% endblock %}
 

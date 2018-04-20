@@ -26,9 +26,9 @@
                     col-md-8
                     col-lg-offset-3
                     col-lg-6">
-
                 <form action="{% pageurl page %}" method="POST" role="form">
                     {% csrf_token %}
+
                     {% if form.subject.errors %}
                         <ol role="alertdialog">
                             {% for error in form.subject.errors %}
@@ -38,7 +38,11 @@
                     {% endif %}
 
                     {% for field in form %}
-                        <div class="field-wrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
+                        <div class="field-wrapper" {% if field.field.required %}
+                                                        aria-required="true"
+                                                    {% else %}
+                                                        aria-required="false"
+                                                    {% endif %}>
 
                             <label for={{ field.id }}>
                                 {{ field.name }}
@@ -51,11 +55,13 @@
                         {% if field.help_text %}
                             <p class="help">{{ field.help_text|safe }}</p>
                         {% endif %}
+
                         </div>
                     {% endfor %}
 
                 <input type="submit">
             </form>
+            </div>
         </div>
     </div>
 
