@@ -3,7 +3,6 @@
 .event-grid{
   & a.event-wrapper{
     width:100%;
-    margin-bottom:.5em;
     & .img{
       min-height:200px;
       height:200px;
@@ -17,6 +16,7 @@
   & .description{
     border: 1px solid rgba(68, 68, 68, .2);
     padding:.5em;
+    margin-bottom:1em;
     color:var(--font_color);
     & p{
       margin:0;
