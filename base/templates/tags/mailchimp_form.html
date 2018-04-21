@@ -4,10 +4,12 @@
 		{% csrf_token %}
 		<div class="field-wrapper" aria-required={% if field.field.required %}"true"{% else %}"false"{% endif %}>
 
-			<p style="color:red;"
+
+			<p style="color:red; margin:0;"
 			   id="mce_form_errors">
 				{{ field.errors }}
 			</p>
+
 
 			<label for={{ field.id }}>
 				Email
