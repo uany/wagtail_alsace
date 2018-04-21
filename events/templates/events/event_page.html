@@ -2,23 +2,22 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-    <div class="container-fluid">
+    <div class="container-fluid event-page">
         <div class="row">
             <div class="col-xs-12
                     col-sm-12
                     col-md-12
                     col-lg-12">
-                <h1>{{ page.title }}</h1>
 
-                <figure>
-                    {% image page.event.image width-500 %}
+                {% image page.event.image original as figure_photo %}
+                <figure style="background-image:url({{ figure_photo.url }})">
+                    <div class="event-details">
+                        <h2>{{ page.event.title }}</h2>
+                        <h5>{{ page.event.date }}</h5>
+                        <h6>{{ page.event.location_name }}</h6>
+                    </div>
                 </figure>
 
-                {% if page.introduction %}
-                    <p>
-                        {{ page.introduction }}
-                    </p>
-                {% endif %}
 
                 {{ page.event.body | safe }}
             </div>
