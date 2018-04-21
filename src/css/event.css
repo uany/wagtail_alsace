@@ -1,11 +1,8 @@
 @import 'main.css';
 
 .event-grid{
-  display:flex;
-  flex-flow: wrap;
   & a.event-wrapper{
-    flex:1 1 auto;
-    max-width:50%;
+    width:100%;
     margin-bottom:.5em;
     & .img{
       min-height:200px;
@@ -48,14 +45,14 @@
 .event-page{
   & figure{
     position:relative;
-    margin-bottom: 1em;
+    margin:0 -2em 1em -2em;
     max-height:300px;
     height:300px;
     background-position: center;
     background-size: cover;
     background-color: #eeeeee;
     & .event-details{
-      padding:.5em;
+      padding: .5em 2em;
       width:100%;
       position: absolute;
       bottom:0;

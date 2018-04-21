@@ -8,7 +8,6 @@
                     col-sm-12
                     col-md-12
                     col-lg-12">
-
                 {% image page.event.image original as figure_photo %}
                 <figure style="background-image:url({{ figure_photo.url }})">
                     <div class="event-details">
@@ -17,9 +16,30 @@
                         <h6>{{ page.event.location_name }} - {{ page.event.location_address }}</h6>
                     </div>
                 </figure>
-
-
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12
+                    col-sm-12
+                    col-md-8
+                    col-lg-8">
                 {{ page.event.body | safe }}
+            </div>
+
+            <div class="col-xs-12
+                    col-sm-12
+                    col-md-4
+                    col-lg-4">
+                <h5>{{ page.event.location_name }}</h5>
+                <p>{{ page.event.location_address }}</p>
+                <iframe
+                        width="100%"
+                        height=250px"
+                        frameborder="0"
+                        style="border:0"
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCcbCexbtt4YygvAiylpuCL5w6TdzqMh00&q={{ page.event.location_name }},{{ page.event.location_address }}"
+                        allowfullscreen>
+                </iframe>
             </div>
         </div>
     </div>
