@@ -63,17 +63,3 @@
     }
   }
 }
-
-@media only screen and (min-width: 36em){
-  .event-grid {
-    & a.event-wrapper {
-      flex: 1 1 45%;
-      &:nth-child(odd){
-        padding-right:.5em;
-      }
-      &:nth-child(even){
-        padding-left:.5em;
-      }
-    }
-  }
-}
