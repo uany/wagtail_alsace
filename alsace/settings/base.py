@@ -21,7 +21,7 @@ ADMINS = [('WebMasters', 'webmaster@alsace.nyc')]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
+DEBUG = os.getenv('DJANGO_DEBUG')
 SECRET_KEY = os.getenv('SECRET_KEY')
 ALLOWED_HOSTS = ['*']
 
