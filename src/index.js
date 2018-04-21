@@ -3,6 +3,7 @@ import './css/main.css';
 import './css/header.css';
 import './css/footer.css';
 import './css/event.css';
+import './css/button.css';
 
 window.$(document).foundation();
 

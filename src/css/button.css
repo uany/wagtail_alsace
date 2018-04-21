@@ -1,0 +1,9 @@
+@import 'main.css';
+
+.btn-cta{
+  width:100%;
+  padding:.5em;
+  background-color: var(--alsace_red);
+  color:white;
+  text-align:center;
+}
