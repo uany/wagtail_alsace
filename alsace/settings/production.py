@@ -1,8 +1,10 @@
-from .base import *
+import os
 
 DEBUG = False
+SECRET_KEY = os.getenv('SECRET_KEY')
+ALLOWED_HOSTS = ['www.alsace.nyc', 'wagtailalsace.herokuapp.com', 'alsace.nyc']
 
-try:
-    from .local import *
-except ImportError:
-    pass
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = 'DENY'
