@@ -179,6 +179,8 @@ BASE_URL = 'http://alsace.nyc'
 WAGTAILADMIN_NOTIFICATION_FROM_EMAIL = 'webmaster@alsace.nyc'
 WAGTAIL_ENABLE_UPDATE_CHECK = True
 
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+
 if os.getenv('MAILGUN_SMTP_SERVER'):
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = os.getenv('MAILGUN_SMTP_SERVER')
@@ -186,8 +188,11 @@ if os.getenv('MAILGUN_SMTP_SERVER'):
     EMAIL_HOST_USER = os.getenv('MAILGUN_SMTP_LOGIN')
     EMAIL_HOST_PASSWORD = os.getenv('MAILGUN_SMTP_PASSWORD')
     EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 
 # Mailchimp
 MAILCHIMP_API_URL = os.getenv('MAILCHIMP_API_URL')
