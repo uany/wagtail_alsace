@@ -18,9 +18,29 @@
                 {% endwith %}
             {% endblock %}
         </title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description"
+              content="{% if page.seo_description %}{{ page.seo_description }}{% endif %}" />
+
+        <meta itemprop="name" content="Alsace.nyc - {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}">
+        <meta itemprop="description" content="{% if page.seo_description %}{{ page.seo_description }}{% endif %}">
+        <meta itemprop="image" content="/static/alsace_nyc.jpg">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Alsace.nyc - {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}e">
+        <meta name="twitter:description" content="{% if page.seo_description %}{{ page.seo_description }}{% endif %}">
+        <!-- Twitter summary card with large image must be at least 280x150px -->
+        <meta name="twitter:image:src" content="/static/alsace_nyc.jpg">
+
+        <!-- Open Graph data -->
+        <meta property="og:title" content="Alsace.nyc - {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="{{ request.get_full_path }}" />
+        <meta property="og:image" content="/static/alsace_nyc.jpg" />
+        <meta property="og:description" content="{% if page.seo_description %}{{ page.seo_description }}{% endif %}" />
+        <meta property="og:site_name" content="Alsace.nyc" />
+    
         <link rel="shortcut icon"
               href="{% static 'favicon.ico' %}"
               type="image/vnd.microsoft.icon">
@@ -49,6 +69,16 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         {# Webpack will inject custom css here #}
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-58578922-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-58578922-1');
+        </script>
+
     <link href="/static/./css/main.css" rel="stylesheet"></head>
 
     <body class="{% block body_class %}{% endblock %}">
