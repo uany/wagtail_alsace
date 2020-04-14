@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 django = "<2.1,>=2.0"
-wagtail = "<2.1,>=2.0"
+wagtail = ">=2.0,<2.8"
 dj-database-url = "*"
 "psycopg2" = "*"
 gunicorn = "*"
